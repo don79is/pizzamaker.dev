@@ -12,5 +12,33 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('main');
 });
+
+Route::get('cheese/form/', [
+    'uses' => 'DTPizzaCheeseController@form'
+]);
+Route::post('cheese/form/', [
+    'as' => 'create.cheese',
+    'uses' => 'DTPizzaCheeseController@addCheese'
+]);
+
+Route::get('pizza/form/', [
+    'uses' => 'DTPizzaController@form'
+]);
+Route::post('pizza/form/', [
+    'as' => 'create.pizza',
+    'uses' => 'DTPizzaController@addPizza'
+]);
+
+Route::get('ingredients/form/', [
+    'uses' => 'DTPizzaIngredientsController@form'
+]);
+Route::post('ingredients/form/', [
+    'as' => 'create.ingredient',
+    'uses' => 'DTPizzaIngredientsController@addIngredient'
+]);
+
+Route::get('/ingredients', [
+    'uses' => 'DTPizzaIngredientsController@index'
+]);
