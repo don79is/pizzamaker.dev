@@ -14,13 +14,13 @@ class DTPizzaIngredientsController extends Controller
      */
     public function index()
     {
-        //
+        return DTPizzaIngredients::get()->toArray();
     }
 
     public function form()
     {
 
-        $configuration ['ingredient'] = DTPizzaIngredients::all()->pluck('ingredients', 'id')->toArray();
+        $configuration ['ingredient'] = DTPizzaIngredients::get()->pluck('ingredients', 'id')->toArray();
 
         //dd($configuration);
 
@@ -36,7 +36,7 @@ class DTPizzaIngredientsController extends Controller
         $data = request()->all();
 
         $record = DTPizzaIngredients::create([
-            'name' => $data['ingredients'],
+            'Ingredients' => $data['ingredient'],
         ]);
 
         return view('content.form_ingredients', $record->toArray());

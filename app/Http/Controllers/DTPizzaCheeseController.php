@@ -33,6 +33,7 @@ class DTPizzaCheeseController extends Controller {
 
         $record = DTPizzaCheese::create ([
             'name' => $data['cheese'],
+            'calories' => rand(1,2000),
         ]);
 
         return view('content.form_cheese', $record->toArray());
