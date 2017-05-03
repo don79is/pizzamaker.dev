@@ -25,7 +25,7 @@
 
     {!! Form::open(['url' => route('create.cheese')]) !!}
 
-    {{Form::label('Cheese', 'Cheese')}}
+    {{Form::label('cheese', 'Suris')}}
     {{Form::text('cheese')}}
     {{Form::submit('Prideti suri!')}}
 

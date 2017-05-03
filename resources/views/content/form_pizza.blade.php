@@ -1,15 +1,11 @@
 @extends('main')
 
-
-
 @section('title', trans('Pasigamink pica'))
-
-
 
 @section('content')
 
-    @if(isset($name))
-        <div>Pica sukurta sėkmingai: {{$name}}</div>
+    @if(isset($pizzaName))
+        <div>Pica sukurta sėkmingai: {{$pizzaName}}</div>
     @endif
 
 
@@ -27,19 +23,19 @@
 
     {!! Form::open(['url' => route('create.pizza')]) !!}
 
-    {{Form::label('name', 'Pizza name')}}
+    {{Form::label('pizza', 'Telefonas')}}
     {{Form::text('pizza')}}
     <br>
     {{Form::select('base', $base)}}<br>
+
     {{Form::select('cheese', $cheese)}}<br>
-    {{Form::select('ingredients', $ingredients)}}<br>
 
+    @foreach($ingredients as $key => $ingr)<br>
+    {{Form::checkbox('ingredients[]',$key)}}
+    {{$ingr}}
+    @endforeach
 
-
-
-
-
-
+    <br>
 
     {{Form::submit('Pasigaminti pizza!')}}<br>
 

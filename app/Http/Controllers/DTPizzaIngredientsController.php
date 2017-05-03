@@ -20,27 +20,24 @@ class DTPizzaIngredientsController extends Controller
     public function form()
     {
 
-        $configuration ['ingredient'] = DTPizzaIngredients::get()->pluck('ingredients', 'id')->toArray();
+        $configuration ['ingredient'] = DTPizzaIngredients::get()->pluck(' ingredients','id')->toArray();
 
-        //dd($configuration);
+
 
         return view('content.form_ingredients', $configuration);
     }
-    public function addIngredients (  )
+    public function addIngredient ()
     {
-        //dd($_POST);
-        //echo $_POST['city'];
-        //dd(request()->ToArray());
-        //dd(request()->all());
-        //dd($data);
+
         $data = request()->all();
 
         $record = DTPizzaIngredients::create([
-            'Ingredients' => $data['ingredient'],
+            ' ingredients' => $data['ingredient'],
+            'calories' => rand(1,200),
         ]);
 
         return view('content.form_ingredients', $record->toArray());
-        //return view('content.form_city');}
+
     }
     public function create()
     {

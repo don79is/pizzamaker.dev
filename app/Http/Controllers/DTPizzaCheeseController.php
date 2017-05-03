@@ -24,16 +24,12 @@ class DTPizzaCheeseController extends Controller {
     }
     public function addCheese (  )
     {
-        //dd($_POST);
-        //echo $_POST['city'];
-        //dd(request()->ToArray());
-        //dd(request()->all());
-        //dd($data);
+
         $data = request()->all();
 
         $record = DTPizzaCheese::create ([
             'name' => $data['cheese'],
-            'calories' => rand(1,2000),
+            'calories' => rand(1,200),
         ]);
 
         return view('content.form_cheese', $record->toArray());
