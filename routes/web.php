@@ -39,6 +39,5 @@ Route::post('ingredients/form/', [
     'uses' => 'DTPizzaIngredientsController@addIngredient'
 ]);
 
-Route::get('/ingredients', [
-    'uses' => 'DTPizzaIngredientsController@index'
-]);
+
+
