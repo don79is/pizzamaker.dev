@@ -19,7 +19,7 @@ class CreateDTPizzaIngredientsConnectionTable extends Migration {
 			$table->softDeletes();
 			$table->string(' ingredients', 225);
 			$table->string('pizza_id', 225)->index('fk_DT_pizza_ingredients_connection_DT_pizza1_idx');
-			$table->string('pizza_ ingredientsl', 225)->index('fk_DT_pizza_ingredients_connection_DT_pizza_ingredients1_idx');
+			$table->string('ingredient_id', 225)->index('fk_DT_pizza_ingredients_connection_DT_pizza_ingredients1_idx');
 		});
 	}
 

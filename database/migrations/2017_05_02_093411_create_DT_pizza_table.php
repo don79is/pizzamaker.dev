@@ -15,7 +15,7 @@ class CreateDTPizzaTable extends Migration {
 		Schema::create('DT_pizza', function(Blueprint $table)
 		{
 			$table->integer('count')->unique('count_UNIQUE');
-			$table->string('id', 36)->unique('id_UNIQUE');
+			$table->string('id', 36)->unique('id_UNIQUE')->primary('id_PRIMARY');
 			$table->timestamps();
 			$table->softDeletes();
 			$table->string('pizzaName');
