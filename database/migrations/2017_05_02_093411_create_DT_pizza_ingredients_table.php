@@ -18,7 +18,7 @@ class CreateDTPizzaIngredientsTable extends Migration {
 			$table->string('id', 36)->unique('id_UNIQUE')->primary('id_PRIMARY');
 			$table->timestamps();
 			$table->softDeletes();
-			$table->string(' ingredients', 225);
+			$table->string('ingredients', 225);
 			$table->integer('calories');
 		});
 	}
