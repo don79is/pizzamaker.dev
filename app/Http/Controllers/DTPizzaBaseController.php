@@ -1,5 +1,6 @@
 <?php namespace App\Http\Controllers;
 
+use App\Models\DTPizzaBase;
 use Illuminate\Routing\Controller;
 
 class DTPizzaBaseController extends Controller {
@@ -14,13 +15,27 @@ class DTPizzaBaseController extends Controller {
 	{
 		//
 	}
+    public function form()
+    {
+        $configuration ['base'] = DTPizzaBase::get()->pluck('name', 'id')->toArray();
 
-	/**
-	 * Show the form for creating a new resource.
-	 * GET /dtpizzabase/create
-	 *
-	 * @return Response
-	 */
+        return view('content.form_base', $configuration);
+    }
+
+    public function addbase()
+    {
+
+        $data = request()->all();
+
+        $record = DTPizzaBase::create([
+            'name' => $data['base'],
+            'calories' => rand(1, 200),
+        ]);
+
+        return view('content.form_base', $record->toArray());
+
+    }
+
 	public function create()
 	{
 		//

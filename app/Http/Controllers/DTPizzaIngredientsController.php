@@ -20,7 +20,7 @@ class DTPizzaIngredientsController extends Controller
     public function form()
     {
 
-        $configuration ['ingredient'] = DTPizzaIngredients::get()->pluck(' ingredients','id')->toArray();
+        $configuration ['ingredients'] = DTPizzaIngredients::get()->pluck('ingredients','id')->toArray();
 
 
 
@@ -32,7 +32,7 @@ class DTPizzaIngredientsController extends Controller
         $data = request()->all();
 
         $record = DTPizzaIngredients::create([
-            ' ingredients' => $data['ingredient'],
+            'ingredients' => $data['ingredient'],
             'calories' => rand(1,200),
         ]);
 

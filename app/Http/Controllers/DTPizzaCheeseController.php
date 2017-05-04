@@ -3,100 +3,96 @@
 use App\Models\DTPizzaCheese;
 use Illuminate\Routing\Controller;
 
-class DTPizzaCheeseController extends Controller {
-
-	/**
-	 * Display a listing of the resource.
-	 * GET /dtpizzacheese
-	 *
-	 * @return Response
-	 */
-	public function index()
-	{
-		echo 'cheese';
-	}
+class DTPizzaCheeseController extends Controller
+{
+    public function index()
+    {
+        echo 'cheese';
+    }
 
     public function form()
     {
-        $configuration ['cheese'] = DTPizzaCheese::get()->pluck('name','id')->toArray();
+        $configuration ['cheese'] = DTPizzaCheese::get()->pluck('name', 'id')->toArray();
 
         return view('content.form_cheese', $configuration);
     }
-    public function addCheese (  )
+
+    public function addCheese()
     {
 
         $data = request()->all();
 
-        $record = DTPizzaCheese::create ([
+        $record = DTPizzaCheese::create([
             'name' => $data['cheese'],
-            'calories' => rand(1,200),
+            'calories' => rand(1, 200),
         ]);
 
         return view('content.form_cheese', $record->toArray());
-        //return view('content.form_city');
+
     }
-	public function create()
-	{
-		//
-	}
 
-	/**
-	 * Store a newly created resource in storage.
-	 * POST /dtpizzacheese
-	 *
-	 * @return Response
-	 */
-	public function store()
-	{
-		//
-	}
+    public function create()
+    {
+        //
+    }
 
-	/**
-	 * Display the specified resource.
-	 * GET /dtpizzacheese/{id}
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function show($id)
-	{
-		//
-	}
+    /**
+     * Store a newly created resource in storage.
+     * POST /dtpizzacheese
+     *
+     * @return Response
+     */
+    public function store()
+    {
+        //
+    }
 
-	/**
-	 * Show the form for editing the specified resource.
-	 * GET /dtpizzacheese/{id}/edit
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function edit($id)
-	{
-		//
-	}
+    /**
+     * Display the specified resource.
+     * GET /dtpizzacheese/{id}
+     *
+     * @param  int $id
+     * @return Response
+     */
+    public function show($id)
+    {
+        //
+    }
 
-	/**
-	 * Update the specified resource in storage.
-	 * PUT /dtpizzacheese/{id}
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function update($id)
-	{
-		//
-	}
+    /**
+     * Show the form for editing the specified resource.
+     * GET /dtpizzacheese/{id}/edit
+     *
+     * @param  int $id
+     * @return Response
+     */
+    public function edit($id)
+    {
+        //
+    }
 
-	/**
-	 * Remove the specified resource from storage.
-	 * DELETE /dtpizzacheese/{id}
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function destroy($id)
-	{
-		//
-	}
+    /**
+     * Update the specified resource in storage.
+     * PUT /dtpizzacheese/{id}
+     *
+     * @param  int $id
+     * @return Response
+     */
+    public function update($id)
+    {
+        //
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     * DELETE /dtpizzacheese/{id}
+     *
+     * @param  int $id
+     * @return Response
+     */
+    public function destroy($id)
+    {
+        //
+    }
 
 }
