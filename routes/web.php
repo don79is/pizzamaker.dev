@@ -28,7 +28,7 @@ Route::get('pizza/form/', [
 ]);
 Route::post('pizza/form/', [
     'as' => 'create.pizza',
-    'uses' => 'DTPizzaController@addPizza'
+    'uses' => 'DTPizzaController@create'
 ]);
 
 Route::get('ingredients/form/', [
@@ -38,6 +38,14 @@ Route::post('ingredients/form/', [
     'as' => 'create.ingredient',
     'uses' => 'DTPizzaIngredientsController@addIngredient'
 ]);
-
-
+Route::get('/pizza', [
+    'uses' => 'DTPizzaController@index'
+]);
+Route::get('base/form/', [
+    'uses' => 'DTPizzaBaseController@form'
+]);
+Route::post('base/form/', [
+    'as' => 'create.base',
+    'uses' => 'DTPizzaBaseController@addBase'
+]);
 
