@@ -11,6 +11,19 @@ class DTPizza extends DTCoreModel
 
     public function connection()
     {
-        return $this->belongsToMany( DTPizzaIngredients :: class,'DT_pizza_ingredients_connection','pizza_id', 'pizza_ ingredientsl');
+        return $this->belongsToMany( DTPizzaIngredients :: class,'DT_pizza_ingredients_connection','pizza_id', 'ingredient_id');
+    }
+
+    public function ingredientsConnection ()
+    {
+        return $this->hasMany( DTPizzaIngredientsConnection:: class, 'pizza_id', 'id' )->with(['ingredients']);
+    }
+    public function pizzaCheese ()
+    {
+        return $this->hasOne( DTPizzaCheese:: class, 'id', 'pizza_cheese_id' );
+    }
+    public function pizzaBase ()
+    {
+        return $this->hasOne( DTPizzaBase:: class, 'id', 'pizza_base_id' );
     }
 }
