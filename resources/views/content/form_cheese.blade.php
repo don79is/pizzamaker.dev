@@ -12,15 +12,6 @@
 
 
 
-    {{--<form method="POST" action="{{route('create.cities')}}">--}}
-    {{--City:<br>--}}
-    {{--<input type="text" name="city" placeholder="write">--}}
-    {{--<br>--}}
-    {{--<input type="submit" value="Submit">--}}
-
-    {{--{{csrf_field()}}--}}
-
-    {{--</form>--}}
 
 
     {!! Form::open(['url' => route('create.cheese')]) !!}

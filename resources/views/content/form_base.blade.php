@@ -1,7 +1,29 @@
-<?php
-/**
- * Created by PhpStorm.
- * User: Donatas Tumanas
- * Date: 2017.05.02
- * Time: 13:34
- */
+@extends('main')
+
+@section('title', trans('Padas'))
+
+
+
+@section('content')
+
+    @if(isset($name))
+        <div>Padas sukurtas sėkmingai: {{$name}}</div>
+    @endif
+
+
+
+
+
+    {!! Form::open(['url' => route('create.base')]) !!}
+
+    {{Form::label('base', 'Padas')}}
+    {{Form::text('base')}}
+    {{Form::submit('Prideti pada!')}}
+
+
+
+
+
+    {!! Form::close() !!}
+
+@endsection

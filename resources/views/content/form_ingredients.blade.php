@@ -20,10 +20,7 @@
     {{Form::submit('Prideti prieda!')}}
 
 
-    @foreach($ingredients as $key => $ingr)<br>
-    {{Form::checkbox('ingredients[]',$key)}}
-    {{$ingr}}
-    @endforeach
+
 
 
     {!! Form::close() !!}
