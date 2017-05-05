@@ -9,6 +9,8 @@
             <th class="col-md-2">Pica</th>
             <th class="col-md-2">Ingredients</th>
             <th class="col-md-2">Colories</th>
+            <th class="col-md-2"></th>
+            <th class="col-md-2">Delete</th>
         </tr>
         <tr>
 
@@ -20,6 +22,7 @@
                 @endforeach
             </td>
             <td> {{$pizza['calories']}}</td>
+            <td><input type="button"  value="Delete" /></td>
         </tr>
 
 

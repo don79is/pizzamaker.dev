@@ -23,25 +23,24 @@ class DTPizzaController extends Controller
         return view('content.form_list',  $configuration);
     }
 
-    public function form()
+
+    public function create()
     {
-        $configuration ['cheese'] = DTPizzaCheese::get()->pluck('name', 'id')->toArray();
-        $configuration ['base'] = DTPizzaBase::get()->pluck('name', 'id')->toArray();
-        $configuration ['ingredients'] = DTPizzaIngredients::get()->pluck('ingredients', 'id')->toArray();
-
-
+        $configuration = $this->getFormData();
+//        dd($configuration);
         return view('content.form_pizza', $configuration);
     }
 
 
-    public function create()
+    public function store()
     {
+        $configuration = $this->getFormData();
         $data = request()->all();
 
         //dd($data);
-        $configuration ['cheese'] = DTPizzaCheese::get()->pluck('name', 'id')->toArray();
-        $configuration ['base'] = DTPizzaBase::get()->pluck('name', 'id')->toArray();
-        $configuration ['ingredients'] = DTPizzaIngredients::get()->pluck('ingredients', 'id')->toArray();
+//        $configuration ['cheese'] = DTPizzaCheese::get()->pluck('name', 'id')->toArray();
+//        $configuration ['base'] = DTPizzaBase::get()->pluck('name', 'id')->toArray();
+//        $configuration ['ingredients'] = DTPizzaIngredients::get()->pluck('ingredients', 'id')->toArray();
 
         if (sizeof($data['ingredients']) > 3) {
             $configuration ['data'] = $data;
@@ -69,7 +68,7 @@ class DTPizzaController extends Controller
             'calories' => $pizza_calories,
 
         ]);
-        //dd($data);
+
         $record->connection()->sync($data['ingredients']);
 
         $record['cheese'] = DTPizzaCheese::all()->pluck('name', 'id')->toArray();
@@ -78,17 +77,17 @@ class DTPizzaController extends Controller
 
         return view('content.form_pizza', $configuration);
     }
-
-    /**
-     * Store a newly created resource in storage.
-     * POST /dtpizza
-     *
-     * @return Response
-     */
-    public function store()
+    public function getFormData()
     {
-        //
+        $configuration ['cheese'] = DTPizzaCheese::all()->pluck('name', 'id')->toArray();
+        $configuration ['base'] = DTPizzaBase::all()->pluck('name', 'id')->toArray();
+        $configuration ['ingredients'] = DTPizzaIngredients::all()->pluck('ingredients', 'id')->toArray();
+
+
+        return $configuration;
     }
+
+
 
     /**
      * Display the specified resource.
@@ -99,7 +98,9 @@ class DTPizzaController extends Controller
      */
     public function show($id)
     {
-        //
+        $configuration ['pizza'] = DTPizza::with(['ingredientsConnection'])->with(['pizzaBase'])->with(['pizzaCheese'])->find($id)->toArray();
+        //dd($configuration);
+        return view('content.one_pizza',  $configuration);
     }
 
     /**
@@ -111,7 +112,13 @@ class DTPizzaController extends Controller
      */
     public function edit($id)
     {
-        //
+        $configuration = $this->getFormData();
+        $configuration ['pizza'] = DTPizza::with(['ingredientsConnection'])->with(['pizzaBase'])->with(['pizzaCheese'])->find($id)->toArray();
+
+
+       //dd($configuration);
+        return view('content.edit_pizza',  $configuration);
+
     }
 
     /**
@@ -123,7 +130,8 @@ class DTPizzaController extends Controller
      */
     public function update($id)
     {
-        //
+
+
     }
 
     /**
@@ -135,7 +143,7 @@ class DTPizzaController extends Controller
      */
     public function destroy($id)
     {
-        //
+
     }
 
 }
