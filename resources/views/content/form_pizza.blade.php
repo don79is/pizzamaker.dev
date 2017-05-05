@@ -21,9 +21,9 @@
     {{Form::text('pizza')}}
     <br>
 
-    {{Form::label('base', 'Padas')}}
+    {{Form::label('base', 'Padas')}}'
     <br>
-    {{Form::select('base', $base)}}<br>
+    {{Form::select('base', $base )}}<br>
 
     {{Form::label('cheese', 'Suris')}}
     <br>
