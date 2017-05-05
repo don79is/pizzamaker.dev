@@ -3,9 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <title>@yield('title')</title>
+    @include('css')
 {{--@include('css')--}}
 {{--@include('fonts')--}}
 {{--@include('meta')--}}
+</head>
 <body>
 {{--@include('header')--}}
 
